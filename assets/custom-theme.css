@@ -1,0 +1,363 @@
+/* Local overrides for static-friendly editing */
+:root {
+  --site-primary: #e67e22;
+  --site-primary-hover: #f2a65a;
+  --site-primary-soft: #fff3e7;
+  --site-card-overlay: #e67e22cc;
+  --site-primary-transparent: rgba(230, 126, 34, 0);
+}
+
+body.theme-orange {
+  --site-primary: #e67e22;
+  --site-primary-hover: #f2a65a;
+  --site-primary-soft: #fff3e7;
+  --site-card-overlay: #e67e22cc;
+  --site-primary-transparent: rgba(230, 126, 34, 0);
+}
+
+body.theme-teal {
+  --site-primary: #0f766e;
+  --site-primary-hover: #14b8a6;
+  --site-primary-soft: #ddfbf7;
+  --site-card-overlay: #0f766ecc;
+  --site-primary-transparent: rgba(15, 118, 110, 0);
+}
+
+body.theme-blue {
+  --site-primary: #2563eb;
+  --site-primary-hover: #60a5fa;
+  --site-primary-soft: #e9f1ff;
+  --site-card-overlay: #2563ebcc;
+  --site-primary-transparent: rgba(37, 99, 235, 0);
+}
+
+body.theme-red {
+  --site-primary: #b41f25;
+  --site-primary-hover: #d98f92;
+  --site-primary-soft: #fdebec;
+  --site-card-overlay: #ad2433cc;
+  --site-primary-transparent: rgba(180, 31, 37, 0);
+}
+
+/* Keep Elementor global tokens orange-based */
+.elementor-kit-10 {
+  --e-global-color-primary: var(--site-primary);
+  --e-global-color-accent: var(--site-primary-hover);
+}
+
+/* Minor polish so orange reads better across sections */
+.elementor-button,
+.elementor-kit-10 .elementor-button,
+.elementor-kit-10 button,
+.elementor-kit-10 input[type="submit"] {
+  background-color: var(--site-primary);
+}
+
+.elementor-button:hover,
+.elementor-button:focus,
+.elementor-kit-10 .elementor-button:hover,
+.elementor-kit-10 .elementor-button:focus {
+  background-color: var(--site-primary-hover);
+}
+
+.elementor-field-textual:focus,
+.elementor-field-textual:active {
+  border-color: var(--site-primary);
+}
+
+::selection {
+  background: var(--site-primary-soft);
+  color: #4a2a08;
+}
+
+/* Theme-able overlays for the red treatment cards section */
+.elementor-2 .elementor-element.elementor-element-210d090::before,
+.elementor-2 .elementor-element.elementor-element-293e25b::before,
+.elementor-2 .elementor-element.elementor-element-1c6aabe::before,
+.elementor-2 .elementor-element.elementor-element-ffdd9e5::before,
+.elementor-2 .elementor-element.elementor-element-2290637::before,
+.elementor-2 .elementor-element.elementor-element-e63373f::before {
+  background-color: var(--site-card-overlay) !important;
+}
+
+.elementor-2 .elementor-element.elementor-element-55fde84::after {
+  background: linear-gradient(91deg, var(--site-primary-transparent) -7.54%, var(--site-primary) 100.22%) !important;
+}
+
+/* Floating theme switcher (toggle panel) */
+.theme-switcher {
+  position: fixed;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+
+.theme-switcher-toggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.theme-switcher-panel {
+  position: absolute;
+  right: 52px;
+  top: 50%;
+  transform: translateY(-50%) translateX(10px);
+  opacity: 0;
+  pointer-events: none;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 10px;
+  width: 228px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.theme-switcher.open .theme-switcher-panel {
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.theme-switcher-title {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.theme-switcher-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.theme-swatch {
+  width: 100%;
+  height: 30px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.theme-swatch:focus-visible {
+  outline: 2px solid #111827;
+  outline-offset: 2px;
+}
+
+.theme-swatch.active {
+  border-color: #111827;
+}
+
+.theme-swatch-orange {
+  background: linear-gradient(135deg, #e67e22, #f2a65a);
+}
+
+.theme-swatch-teal {
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+}
+
+.theme-swatch-blue {
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+}
+
+.theme-swatch-red {
+  background: linear-gradient(135deg, #b41f25, #d98f92);
+}
+
+@media (max-width: 767px) {
+  .theme-switcher {
+    right: 10px;
+    top: auto;
+    bottom: 80px;
+    transform: none;
+  }
+
+  .theme-switcher-panel {
+    right: 0;
+    top: auto;
+    bottom: 52px;
+    transform: translateY(8px);
+  }
+
+  .theme-switcher.open .theme-switcher-panel {
+    transform: translateY(0);
+  }
+}
+
+/* Testimonial slider polish */
+.elementor-element-fb177a2 .swiper,
+.elementor-element-fb177a2 .swiper-wrapper {
+  overflow: hidden !important;
+}
+
+.elementor-element-fb177a2 .swiper-wrapper {
+  width: 100% !important;
+  display: flex !important;
+  gap: 0 !important;
+  will-change: transform;
+  transition: transform 0.3s ease;
+}
+
+.elementor-element-fb177a2 .swiper-slide {
+  width: 100% !important;
+  margin-right: 0 !important;
+  display: block !important;
+  opacity: 1 !important;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.elementor-element-fb177a2 .swiper-slide-duplicate {
+  display: none !important;
+}
+
+.elementor-element-fb177a2 .static-testimonial-card {
+  border: 0;
+  background: transparent;
+  min-height: 560px;
+  padding: 22px 18px 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.elementor-element-fb177a2 .static-testimonial-stars {
+  font-size: 40px;
+  line-height: 1;
+  color: #e2a84d;
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+}
+
+.elementor-element-fb177a2 .static-testimonial-quote {
+  margin: 0;
+  color: #111827;
+  font-family: "Onest", sans-serif;
+  font-size: 18px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.elementor-element-fb177a2 .static-testimonial-person {
+  margin-top: auto;
+}
+
+.elementor-element-fb177a2 .static-testimonial-avatar {
+  width: 112px;
+  height: 112px;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 16px auto 0;
+}
+
+.elementor-element-fb177a2 .static-testimonial-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.elementor-element-fb177a2 .static-testimonial-name {
+  margin: 16px 0 0;
+  color: #111827;
+  font-family: "Onest", sans-serif;
+  font-size: 54px;
+  line-height: 1.08;
+  font-weight: 700;
+}
+
+.elementor-element-fb177a2 .static-testimonial-role {
+  margin: 8px 0 0;
+  color: #111827;
+  font-size: 20px;
+}
+
+.elementor-element-fb177a2 .elementor-widget-heading .elementor-heading-title {
+  font-size: 18px !important;
+  line-height: 1.45 !important;
+  font-weight: 600 !important;
+  max-width: 34ch;
+  margin: 0 auto;
+}
+
+.elementor-element-fb177a2 .elementor-icon-box-title span {
+  font-size: 24px;
+}
+
+.elementor-element-fb177a2 .elementor-icon-box-description {
+  font-size: 16px;
+}
+
+.elementor-element-fb177a2 .swiper-pagination {
+  position: static !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: fit-content !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 18px auto 0 !important;
+}
+
+.elementor-element-fb177a2 .swiper-pagination .swiper-pagination-bullet {
+  margin: 0 !important;
+}
+
+@media (max-width: 1024px) {
+  .elementor-element-fb177a2 .elementor-widget-heading .elementor-heading-title {
+    font-size: 16px !important;
+    max-width: 30ch;
+  }
+
+  .elementor-element-fb177a2 .static-testimonial-card {
+    min-height: 520px;
+  }
+
+  .elementor-element-fb177a2 .static-testimonial-quote {
+    font-size: 16px;
+  }
+
+  .elementor-element-fb177a2 .static-testimonial-name {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 767px) {
+  .elementor-element-fb177a2 .static-testimonial-card {
+    min-height: 500px;
+    padding: 18px 14px 16px;
+  }
+
+  .elementor-element-fb177a2 .static-testimonial-stars {
+    font-size: 34px;
+    letter-spacing: 6px;
+    margin-bottom: 14px;
+  }
+
+  .elementor-element-fb177a2 .static-testimonial-quote {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .elementor-element-fb177a2 .static-testimonial-name {
+    font-size: 34px;
+  }
+
+  .elementor-element-fb177a2 .static-testimonial-role {
+    font-size: 18px;
+  }
+}
